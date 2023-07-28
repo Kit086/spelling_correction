@@ -2,7 +2,35 @@
 
 这是蓝猫的 Spelling Correction 应用。
 
-## 如何运行
+## 依赖
+
+该应用依赖 venv，torch，transformers 和 nltk 这四个库，以及 `oliverguhr/spelling-correction-english-base` 模型和 `nltk` 用到的模型和数据集。请您安装 `venv`，以方便我的脚本创建虚拟环境，防止该项目的依赖破坏您的主要 python 环境。其它依赖您不需要手动安装，我的脚本会帮您安装。
+
+### 如何安装 venv ？
+
+在 windows 和 debian/ubuntu 上安装 venv 的方法如下：
+
+- 在 windows 上，你需要先安装 pip，一个 python 的包管理器。你可以使用以下命令来检查和更新 pip：
+
+```bash
+py -m pip --version # 查看 pip 的版本
+py -m pip install --upgrade pip # 更新 pip 到最新版本
+```
+
+- 然后，你可以使用 pip 来安装 venv，一个用于创建虚拟环境的模块。你可以使用以下命令来安装 venv：
+
+```bash
+py -m pip install --user virtualenv # 安装 venv 到用户目录
+```
+
+- 在 debian 上，你需要安装 python3.x-venv，`.x` 指您具体的 python 版本，例如 `python3.10-venv`。你可以使用以下命令来安装 python3.x-venv：
+
+```bash
+sudo apt update # 更新软件源
+sudo apt install python3.x-venv # 安装 python3 和 python3.x-venv
+```
+
+## 运行
 
 该应用首次运行时需要需要连接互联网下载 model，请在第一次运行时确保网络连接正常。后续的运行不需要连接互联网。
 
@@ -42,9 +70,9 @@ Done!
 
 ## 注意事项
 
-我在代码里设置的模型可接收的最大长度是 4096。如果您需要处理更长的文本，可以修改
+我在代码里设置的模型可接收的最大长度是 4096。如果您需要处理更长的文本，可以修改 `run.ps1` 中的 `$max_length = 4096` 的值，如果您是 Linux 用户，可以修改 `run.sh` 中的 `max_length=4096` 的值。
 
-## 原理
+## 原理介绍
 
 首先在互联网上搜索，发现 `oliverguhr/spelling-correction-english-base` 这个模型可以不错的对句子进行纠错，而且只需 3 行代码就可以搞定：
 
@@ -74,7 +102,3 @@ output = " ".join(corrected_sentences)
 print("===========================================")
 print("result: " + output)
 ```
-
-## 依赖
-
-该应用依赖 torch，transformers 和 nltk 这三个库，以及 `oliverguhr/spelling-correction-english-base` 模型和 `nltk` 用到的模型和数据集。您不需要手动安装，我的脚本会帮您安装。
