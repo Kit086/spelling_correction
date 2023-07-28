@@ -56,6 +56,25 @@ fix_spelling = pipeline("text2text-generation",model="oliverguhr/spelling-correc
 print(fix_spelling("lets do a comparsion", max_length=4096))
 ```
 
+但是经过测试，一旦输入的句子过长，该模型就会胡言乱语。
+
+所以我引入了 `nltk`，另一个 NLP 模型，用来把用户的输入按句来分开，然后分别让 `oliverguhr/spelling-correction-english-base` 纠错，最终再拼接到一起：
+
+```python
+ # split the input into sentences
+sentences = nltk.sent_tokenize(line)
+# initialize an empty list to store the corrected sentences
+corrected_sentences = []
+# loop over each sentence and correct it
+for sentence in sentences:
+    result = fix_spelling(sentence, max_length=max_length)
+    corrected_sentences.append(result[0]["generated_text"])
+# join the corrected sentences with a space
+output = " ".join(corrected_sentences)
+print("===========================================")
+print("result: " + output)
+```
+
 ## 依赖
 
-该应用依赖 torch，transformers 和 nltk 这三个库，您不需要手动安装，我的脚本会帮您安装。
+该应用依赖 torch，transformers 和 nltk 这三个库，以及 `oliverguhr/spelling-correction-english-base` 模型和 `nltk` 用到的模型和数据集。您不需要手动安装，我的脚本会帮您安装。

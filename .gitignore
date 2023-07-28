@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except these files
+!run.ps1
+!run.sh
+!main.py
+!requirements.txt
+!.gitignore
