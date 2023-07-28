@@ -2,12 +2,17 @@ from transformers import pipeline
 import cmd
 import nltk
 import sys
+import torch
 
 nltk.download('punkt')
 
 class bcolors:
     GREEN = '\033[92m'
     END = '\033[0m'
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+print(bcolors.GREEN + "Your program is running on " + device.type + "." + bcolors.END)
 
 fix_spelling = pipeline("text2text-generation", model="oliverguhr/spelling-correction-english-base")
 
