@@ -28,8 +28,8 @@ class SpellingFixer(cmd.Cmd):
                 corrected_sentences.append(result[0]["generated_text"])
             # join the corrected sentences with a space
             output = " ".join(corrected_sentences)
-            print("===============================")
-            print("# " + output)
+            print("===========================================")
+            print("result: " + output)
 
 if __name__ == "__main__":
     SpellingFixer().cmdloop()

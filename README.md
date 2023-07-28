@@ -29,6 +29,17 @@ New Bing 反对我的这种说法，这是它改写的：
 - 如果您是 Mac 用户，请打开 terminal，然后运行 `./run.sh` 命令。如果出现了权限问题，请 `sudo` 或者您的用户添加 `run.sh` 的可执行权限。同样也是自动创建 python 虚拟环境，安装依赖，运行应用。Mac 用户是最有品味的用户，因为他们可以拥有最美丽的界面和最优雅的设计。
 ```
 
+## 运行示例
+
+```bash
+Welcome to the spelling fixer. Type a sentence to correct it or 'quit' to exit.
+> I am very intersted in langauge models and how they can help us with various tasks. I think they are very powerfull and amazing. However, I also have some questions and doubts about them. For example, how can we ensure that they are ethical and responsible? How can we avoid bias and harm? How can we evalute their performance and quality?
+===========================================
+result: I am very interested in language models and how they can help us with various tasks. I think they are very powerful and amazing. However, I also have some questions and doubts about them. For example, how can we ensure that they are ethical and responsible? How can we avoid bias and harm? How can we evaluate their performance and quality?
+> quit
+Done!
+```
+
 ## 依赖
 
 该应用依赖 torch，transformers 和 nltk 这三个库，您不需要手动安装，我的脚本会帮您安装。
