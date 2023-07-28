@@ -40,6 +40,22 @@ result: I am very interested in language models and how they can help us with va
 Done!
 ```
 
+## 注意事项
+
+我在代码里设置的模型可接收的最大长度是 4096。如果您需要处理更长的文本，可以修改
+
+## 原理
+
+首先在互联网上搜索，发现 `oliverguhr/spelling-correction-english-base` 这个模型可以不错的对句子进行纠错，而且只需 3 行代码就可以搞定：
+
+```python
+from transformers import pipeline
+
+fix_spelling = pipeline("text2text-generation",model="oliverguhr/spelling-correction-english-base")
+
+print(fix_spelling("lets do a comparsion", max_length=4096))
+```
+
 ## 依赖
 
 该应用依赖 torch，transformers 和 nltk 这三个库，您不需要手动安装，我的脚本会帮您安装。

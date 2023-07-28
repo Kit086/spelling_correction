@@ -1,3 +1,6 @@
+# Define a variable for max_length
+$max_length = 4096
+
 # Check if the virtual environment exists
 if (Test-Path .\Scripts) {
     Write-Host "The virtual environment already exists."
@@ -19,9 +22,9 @@ py -m pip install --upgrade pip
 Write-Host "Installing the dependencies..."
 py -m pip install -r requirements.txt
 
-# Run the main script
+# Run the main script with the max_length variable
 Write-Host "Running the main script..."
-py .\main.py
+py .\main.py $max_length
 
 # Done
 Write-Host "Done!"
